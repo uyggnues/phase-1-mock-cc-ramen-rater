@@ -2,10 +2,10 @@
 // first 
 const ramenMenuDiv = document.getElementById("ramen-menu")
 // second (this comes after the displayRamen()
-const detailImg = document.querySelector("#ramen-detail > .detail-image") 
+const detailImg = document.querySelector("#ramen-detail > .detail-image") // had to use querySelector here because i needed to go in deeper to access the pot i wanted to access
 const detailName = document.querySelector("#ramen-detail > .name")
 const detailRestaurant = document.querySelector("#ramen-detail > .restaurant")
-const detailsRating = document.getElementById("rating-display")
+const detailsRating = document.getElementById("rating-display") // can use getElementByIdbecause its just straight up in accessing the place i want to access.
 const detailsComment = document.getElementById("comment-display")
 // third (this comes after setting what will go into the set place of everything)
 const ramenForm = document.getElementById("new-ramen")
@@ -20,14 +20,16 @@ const ramenForm = document.getElementById("new-ramen")
 // callbacks (this is putting all the information in a given place)_________________________________________
 const handleSubmit = (event) => { // this comes after getting where the new ramen detail will go 
     event.preventDefault() 
-    const name = event.target.name.value
+    const name = event.target.name.value // .target is grabbing the information that is inputted in the form
     const restaurant = event.target.restaurant.value
     const image = event.target.image.value
     const rating = event.target.rating.value
     const comment = document.getElementById("new-comment").value
-    const newRamen = {name, restaurant, image, rating, comment,}
-    event.target.reset()
-    displayRamen(newRamen)
+    const newRamen = {name, restaurant, image, rating, comment}
+    //if i wanted to do ^^^ the long way but better to understand then it would be like the example under:
+    // const name: name, restaurant: restaurant, image: image, rating: rating, comment: comment
+    event.target.reset() // this is to reset and clear out the form
+    displayRamen(newRamen) // taking the submitted data and displaying it on screen
 }
 
 const handleClick = (ramen, event) => { // this comes after getting the details to put everything
@@ -38,7 +40,6 @@ const handleClick = (ramen, event) => { // this comes after getting the details 
     detailsComment.innerText = ramen.comment
 }
 const displayRamen = (ramenObj) => { // this comes after fetching 
-    
     // create img tag
     const ramenImg = document.createElement("img")    
     // set img src
@@ -66,7 +67,7 @@ const fetchData = () => {
 
 
 // start the logic
-ramenForm.addEventListener("submit", handleSubmit) // when u put (), then callback, then it will give u a error 
+ramenForm.addEventListener("submit", handleSubmit) // when u put () after in this case "handle submit", then it will give u a error 
 fetchData()
 // everything up here ^^^ is fetching the data from the server so we can get the information t odisplay the information
 // look where you have to display first part of information first 
