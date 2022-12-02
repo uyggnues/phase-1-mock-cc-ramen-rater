@@ -1,11 +1,15 @@
-// define global variable for later use
+// define global variable for later use (this is setting where different information will go in different places)
+// first 
 const ramenMenuDiv = document.getElementById("ramen-menu")
-const detailImg = document.querySelector("#ramen-detail > .detail-image")
+// second (this comes after the displayRamen()
+const detailImg = document.querySelector("#ramen-detail > .detail-image") 
 const detailName = document.querySelector("#ramen-detail > .name")
 const detailRestaurant = document.querySelector("#ramen-detail > .restaurant")
 const detailsRating = document.getElementById("rating-display")
 const detailsComment = document.getElementById("comment-display")
+// third (this comes after setting what will go into the set place of everything)
 const ramenForm = document.getElementById("new-ramen")
+// everything up here ^^^ is getting the place where we want to display what we set whatever we code down.
 
 {/* <div id="ramen-detail">
     <img class="detail-image" src="./assets/image-placeholder.jpg" alt="Insert Name Here" />
@@ -13,9 +17,9 @@ const ramenForm = document.getElementById("new-ramen")
     <h3 class="restaurant">Insert Restaurant Here</h3>
   </div> */}
 
-// callbacks
-const handleSubmit = (event) => {
-    event.preventDefault()
+// callbacks (this is putting all the information in a given place)_________________________________________
+const handleSubmit = (event) => { // this comes after getting where the new ramen detail will go 
+    event.preventDefault() 
     const name = event.target.name.value
     const restaurant = event.target.restaurant.value
     const image = event.target.image.value
@@ -26,14 +30,14 @@ const handleSubmit = (event) => {
     displayRamen(newRamen)
 }
 
-const handleClick = (ramen, event) => {
+const handleClick = (ramen, event) => { // this comes after getting the details to put everything
     detailImg.src = ramen.image
     detailName.innerText = ramen.name
     detailRestaurant.innerText = ramen.restaurant
     detailsRating.innerText = ramen.rating
     detailsComment.innerText = ramen.comment
 }
-const displayRamen = (ramenObj) => {
+const displayRamen = (ramenObj) => { // this comes after fetching 
     
     // create img tag
     const ramenImg = document.createElement("img")    
@@ -48,9 +52,10 @@ const displayRamen = (ramenObj) => {
     // append img to Div
     ramenMenuDiv.appendChild(ramenImg)
 }
-// fetch function
-
-
+// everything up here ^^^ is displaying everything in to the place where we want to display 
+// _____________________________________________________________________________________________________________
+// (this is where i get(fetch) the information from the given server(inthis case is "http://localhost/ramen"))
+// fetch function (this comes first after  getting the main div or li or ul or whatever )
 const fetchData = () => {
     
     fetch('http://localhost:3000/ramens')
@@ -62,8 +67,11 @@ const fetchData = () => {
 
 // start the logic
 ramenForm.addEventListener("submit", handleSubmit) // when u put (), then callback, then it will give u a error 
-
 fetchData()
+// everything up here ^^^ is fetching the data from the server so we can get the information t odisplay the information
+// look where you have to display first part of information first 
+// then if its asking to display something first then display whatever is giving first 
+// then look if there is a .event then work on that
 
 
 
@@ -95,44 +103,48 @@ fetchData()
 
 
 
-// document.addEventListener("DOMContentLoaded", () => {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const ramenMenuDiv = document.getElementById('ramenMenu')
+
+
+// const handleClick = () => {
     
-//     const ramenDiv = document.getElementById('ramen-menu');
-//     const ramenMenu = document.querySelector("#new-ramen");
-
-// const displayMenu = (menuObj) => {
-//     menuObj.innerHTML = `
-//     <div id="ramen-menu">
-//     <!-- Ramen Images Here -->
-//   </div>
-
-//   <!-- Ramen Details -->
-//   <div id="ramen-detail">
-//     <img class="detail-image" src=${menuObj.image} alt="Insert Name Here" />
-//     <h2 class="name">${menuObj.name}</h2>
-//     <h3 class="restaurant">${menuObj.restaurant}</h3>
-//   </div>
-
-//   <h3>Rating:</h3>
-//   <p>
-//     <span id='rating-display'>${menuObj.rating}</span> / 10
-//   </p>
-//   <h3>Comment:</h3>
-//   <p id='comment-display'>
-//     ${menuObj.comment}
-//   </p>
-//   `
-//   ramenDiv().appendChild(menuObj)
-  
-
 // }
 
+// const displayRamen = (ramenObj) => {
+//     const ramenImg =  document.createElement('img')
+//     ramenImg.src = ramenObj.ramenImg
+//     ramenImg.addEventListener("click", (event) => handleClick(ramenObj, event))
+//     ramenMenuDiv.appendChild(ramenImg)
+    
+    
+// }
 
 // const fetchData = () => {
 //     fetch("http://localhost:3000/ramens")
-//     .then(response => response.json())
-//     .then(menu => menu.forEach(displayMenu))
+//     .then(resp => resp.json())
+//     .then(ramens => ramens.forEach(displayRamen))
 //     .catch(error => alert(error))
 // }
 // fetchData()
-// })
